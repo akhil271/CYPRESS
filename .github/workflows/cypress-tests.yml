@@ -26,7 +26,7 @@ jobs:
         run: npx cypress install    # Ensures Cypress binary is downloaded
 
       - name: Run Cypress tests
-        run: npx cypress run --spec cypress2/cypress/e2e/data_driven.cy.js
+        run: npx cypress run --spec cypress/e2e/data_driven.cy.js
         env:
           CYPRESS_baseUrl: https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
           # Sets Cypress baseUrl in env (overrides cypress.config.js)
