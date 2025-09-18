@@ -1,0 +1,165 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-09-18T07:04:21.320Z",
+    "end": "2025-09-18T07:04:47.201Z",
+    "duration": 25881,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "bba39206-90f8-4d8e-b811-362dfb1b3fe3",
+      "title": "",
+      "fullFile": "cypress\\e2e\\data_driven.cy.js",
+      "file": "cypress\\e2e\\data_driven.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "e6550a41-d8fb-4ba0-887d-065d8911f0b5",
+          "title": "OrangeHRM Data-Driven Login Tests",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should handle login for: Valid credentials",
+              "fullTitle": "OrangeHRM Data-Driven Login Tests should handle login for: Valid credentials",
+              "timedOut": null,
+              "duration": 10939,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');\n// Wait for page to load completely\ncy.get('input[name=\"username\"]').should('be.visible');\ncy.get('input[name=\"password\"]').should('be.visible');\n// Type username if not empty\nif (testCase.username) {\n  cy.get('input[name=\"username\"]').type(testCase.username);\n}\n// Type password if not empty\nif (testCase.password) {\n  cy.get('input[name=\"password\"]').type(testCase.password);\n}\n// Click login button\ncy.get('button[type=\"submit\"]').click();\n// Verify expected outcome\nif (testCase.expected === 'success') {\n  // Should be redirected to dashboard\n  cy.url().should('include', '/dashboard');\n  cy.get('.oxd-topbar-header-title').should('contain', 'Dashboard');\n  cy.get('.oxd-userdropdown-tab').should('be.visible');\n} else if (testCase.expected === 'Invalid credentials') {\n  // Should show error message or stay on login page\n  //oxd-alert-content oxd-alert-content--error\n  cy.get('.oxd-alert-content-text').should('be.visible').and('contain', 'Invalid credentials');\n  // Should remain on login page\n  cy.url().should('include', '/auth/login');\n} else {\n  // Should show error message or stay on login page\n  cy.get('.oxd-input-group__message').should('be.visible').and('contain', 'Required');\n  // Should remain on login page\n  cy.url().should('include', '/auth/login');\n}",
+              "err": {},
+              "uuid": "22bd3412-61d8-46ea-9317-1d066ea02737",
+              "parentUUID": "e6550a41-d8fb-4ba0-887d-065d8911f0b5",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should handle login for: Invalid credentials",
+              "fullTitle": "OrangeHRM Data-Driven Login Tests should handle login for: Invalid credentials",
+              "timedOut": null,
+              "duration": 5657,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');\n// Wait for page to load completely\ncy.get('input[name=\"username\"]').should('be.visible');\ncy.get('input[name=\"password\"]').should('be.visible');\n// Type username if not empty\nif (testCase.username) {\n  cy.get('input[name=\"username\"]').type(testCase.username);\n}\n// Type password if not empty\nif (testCase.password) {\n  cy.get('input[name=\"password\"]').type(testCase.password);\n}\n// Click login button\ncy.get('button[type=\"submit\"]').click();\n// Verify expected outcome\nif (testCase.expected === 'success') {\n  // Should be redirected to dashboard\n  cy.url().should('include', '/dashboard');\n  cy.get('.oxd-topbar-header-title').should('contain', 'Dashboard');\n  cy.get('.oxd-userdropdown-tab').should('be.visible');\n} else if (testCase.expected === 'Invalid credentials') {\n  // Should show error message or stay on login page\n  //oxd-alert-content oxd-alert-content--error\n  cy.get('.oxd-alert-content-text').should('be.visible').and('contain', 'Invalid credentials');\n  // Should remain on login page\n  cy.url().should('include', '/auth/login');\n} else {\n  // Should show error message or stay on login page\n  cy.get('.oxd-input-group__message').should('be.visible').and('contain', 'Required');\n  // Should remain on login page\n  cy.url().should('include', '/auth/login');\n}",
+              "err": {},
+              "uuid": "420ac1d5-76a0-4fab-bb34-5562d7b66a1f",
+              "parentUUID": "e6550a41-d8fb-4ba0-887d-065d8911f0b5",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should handle login for: Empty username",
+              "fullTitle": "OrangeHRM Data-Driven Login Tests should handle login for: Empty username",
+              "timedOut": null,
+              "duration": 2614,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');\n// Wait for page to load completely\ncy.get('input[name=\"username\"]').should('be.visible');\ncy.get('input[name=\"password\"]').should('be.visible');\n// Type username if not empty\nif (testCase.username) {\n  cy.get('input[name=\"username\"]').type(testCase.username);\n}\n// Type password if not empty\nif (testCase.password) {\n  cy.get('input[name=\"password\"]').type(testCase.password);\n}\n// Click login button\ncy.get('button[type=\"submit\"]').click();\n// Verify expected outcome\nif (testCase.expected === 'success') {\n  // Should be redirected to dashboard\n  cy.url().should('include', '/dashboard');\n  cy.get('.oxd-topbar-header-title').should('contain', 'Dashboard');\n  cy.get('.oxd-userdropdown-tab').should('be.visible');\n} else if (testCase.expected === 'Invalid credentials') {\n  // Should show error message or stay on login page\n  //oxd-alert-content oxd-alert-content--error\n  cy.get('.oxd-alert-content-text').should('be.visible').and('contain', 'Invalid credentials');\n  // Should remain on login page\n  cy.url().should('include', '/auth/login');\n} else {\n  // Should show error message or stay on login page\n  cy.get('.oxd-input-group__message').should('be.visible').and('contain', 'Required');\n  // Should remain on login page\n  cy.url().should('include', '/auth/login');\n}",
+              "err": {},
+              "uuid": "8e482572-eda1-4773-9e03-4306148a723e",
+              "parentUUID": "e6550a41-d8fb-4ba0-887d-065d8911f0b5",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should handle login for: Empty password",
+              "fullTitle": "OrangeHRM Data-Driven Login Tests should handle login for: Empty password",
+              "timedOut": null,
+              "duration": 2469,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');\n// Wait for page to load completely\ncy.get('input[name=\"username\"]').should('be.visible');\ncy.get('input[name=\"password\"]').should('be.visible');\n// Type username if not empty\nif (testCase.username) {\n  cy.get('input[name=\"username\"]').type(testCase.username);\n}\n// Type password if not empty\nif (testCase.password) {\n  cy.get('input[name=\"password\"]').type(testCase.password);\n}\n// Click login button\ncy.get('button[type=\"submit\"]').click();\n// Verify expected outcome\nif (testCase.expected === 'success') {\n  // Should be redirected to dashboard\n  cy.url().should('include', '/dashboard');\n  cy.get('.oxd-topbar-header-title').should('contain', 'Dashboard');\n  cy.get('.oxd-userdropdown-tab').should('be.visible');\n} else if (testCase.expected === 'Invalid credentials') {\n  // Should show error message or stay on login page\n  //oxd-alert-content oxd-alert-content--error\n  cy.get('.oxd-alert-content-text').should('be.visible').and('contain', 'Invalid credentials');\n  // Should remain on login page\n  cy.url().should('include', '/auth/login');\n} else {\n  // Should show error message or stay on login page\n  cy.get('.oxd-input-group__message').should('be.visible').and('contain', 'Required');\n  // Should remain on login page\n  cy.url().should('include', '/auth/login');\n}",
+              "err": {},
+              "uuid": "702d63be-68bb-4922-9ec3-9e47152204ef",
+              "parentUUID": "e6550a41-d8fb-4ba0-887d-065d8911f0b5",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "22bd3412-61d8-46ea-9317-1d066ea02737",
+            "420ac1d5-76a0-4fab-bb34-5562d7b66a1f",
+            "8e482572-eda1-4773-9e03-4306148a723e",
+            "702d63be-68bb-4922-9ec3-9e47152204ef"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 21679,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "charts": true,
+        "reportPageTitle": "OrangeHRM Test Report",
+        "inlineAssets": true
+      },
+      "version": "6.3.0"
+    }
+  }
+}

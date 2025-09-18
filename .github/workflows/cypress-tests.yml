@@ -1,0 +1,45 @@
+name: Cypress Tests   # Workflow name
+
+on:
+  push:               # Trigger workflow when code is pushed
+    branches: [ main ]
+  pull_request:       # Also trigger when PR is opened to main
+    branches: [ main ]
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest   # GitHub-hosted Linux runner
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4   # Downloads your repo code
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'        # Uses Node.js v20
+          cache: 'npm'              # Caches node_modules between runs
+
+      - name: Install dependencies
+        run: npm ci                 # Clean install from package-lock.json
+
+      - name: Install Cypress
+        run: npx cypress install    # Ensures Cypress binary is downloaded
+
+      - name: Run Cypress tests
+        run: npx cypress run --spec cypress2/cypress/e2e/data_driven.cy.js
+        env:
+          CYPRESS_baseUrl: https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
+          # Sets Cypress baseUrl in env (overrides cypress.config.js)
+
+      - name: Upload screenshots (on failure)
+        if: failure()               # Runs only if previous step failed
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots # Uploads screenshots for debugging
+
+      - name: Upload reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-reports
+          path: cypress/reports     # Uploads test reports (JUnit/HTML/etc.)

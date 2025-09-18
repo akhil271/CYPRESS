@@ -1,0 +1,112 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-09-18T07:01:26.173Z",
+    "end": "2025-09-18T07:01:38.436Z",
+    "duration": 12263,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "4536cc8e-115a-4cb6-b9e1-6066429e3e4b",
+      "title": "",
+      "fullFile": "cypress\\e2e\\SauceDemo-copy-1.cy.js",
+      "file": "cypress\\e2e\\SauceDemo-copy-1.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "cd21f3ad-8d01-4dbb-8844-112ad23a5fcc",
+          "title": "template spec",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "sauceDemo",
+              "fullTitle": "template spec sauceDemo",
+              "timedOut": null,
+              "duration": 9270,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://www.saucedemo.com/');\n// cy.reload();\ncy.get('[data-test=\"username\"]').type('standard_user');\n//cy.get('[data-test=\"login-credentials-container\"] .login_credentials_wrap-inner').click();\n// cy.get('[data-test=\"password\"]').click();\ncy.get('[data-test=\"password\"]').clear();\ncy.get('[data-test=\"password\"]').type('sec');\ncy.get('[data-test=\"password\"]').clear();\ncy.get('[data-test=\"password\"]').type('secret');\ncy.get('[data-test=\"password\"]').clear();\ncy.get('[data-test=\"password\"]').type('secret_');\ncy.get('[data-test=\"password\"]').clear();\ncy.get('[data-test=\"password\"]').type('secret_sauce');\ncy.get('[data-test=\"login-button\"]').click();\ncy.url().should('include', '/inventory.html');\n//1. Asserting Properties and States\n// -->Multiple Assertions:\ncy.get('.app_logo', {\n  timeout: 10000\n}).should('exist');\ncy.get('.app_logoo').should('not.exist');\ncy.get('.app_logo').should('be.visible');\ncy.get('app_logoo').should('not.be.visible');\n// -->Text Content\ncy.get('.title').should('have.text', 'Products');\ncy.get('.title').should('contain', 'Produ');\ncy.get('.title').invoke('text').should('eq', 'Products'); // inovking before matching\ncy.get('.title').should('not.have.text', 'Book');\ncy.get('.app_logo').should('have.text', 'Swag Labs');\n// first item should have price as $29.99\ncy.get('.inventory_item_price').first().should('have.text', \"$29.99\");\n// -->Attributes Values\ncy.get('#add-to-cart-sauce-labs-backpack').should('have.attr', 'name', 'add-to-cart-sauce-labs-backpack');\ncy.get('#add-to-cart-sauce-labs-backpack').should('not.be.disabled');\n// cy.get('#add-to-cart-sauce-labs-backpack').should('not.have.attr','readonly');\n//cy.get('.inventory_details_price').should('not.have.class','inactive');\n// -->Input Values\ncy.get('[data-test=\"shopping-cart-link\"]').click();\ncy.get('#checkout').click();\ncy.get('[data-test=\"firstName\"]').should('exist'); // input is present\ncy.get('[data-test=\"firstName\"]').should('have.value', ''); // empty by default\ncy.go('back');\ncy.go('back');\n//-->Length\ncy.get('#item_4_img_link', {\n  timeout: 10000\n}).should('have.length', 1); // Checks the number of elements\ncy.get('#item_4_img_link').should('have.length.greaterThan', 0);\n// 2. Chaining Multiple Assertions:\ncy.get('[data-test=\"add-to-cart-sauce-labs-bike-light\"]').should('be.visible').and('have.text', 'Add to cart').and('not.have.class', 'disabled');\n// 3. Asserting against a Function:\ncy.get('.inventory_list').should($list => {\n  expect($list).to.have.length(1);\n  expect($list.first()).to.contain('carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.');\n});\n// 4. Asserting on the URL:\ncy.url().should('include', '/inventory.html');\ncy.url().should('eq', 'https://www.saucedemo.com/inventory.html');\n//5. Asserting on Window Properties:\ncy.window().should('have.property', 'localStorage');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `app_logoo`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `app_logoo`, but never found it.\n    at Context.eval (webpack:///./cypress/e2e/SauceDemo-copy-1.cy.js:28:22)",
+                "diff": null
+              },
+              "uuid": "61d48167-1ea3-4100-9425-6e6833be28db",
+              "parentUUID": "cd21f3ad-8d01-4dbb-8844-112ad23a5fcc",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "61d48167-1ea3-4100-9425-6e6833be28db"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 9270,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "charts": true,
+        "reportPageTitle": "OrangeHRM Test Report",
+        "inlineAssets": true
+      },
+      "version": "6.3.0"
+    }
+  }
+}
